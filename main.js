@@ -59,9 +59,11 @@ function digits(num) {
   let arr = num.toString().split(".").join("");
   return Array.from(arr).map((i) => Number(i));
 }
+
 function truncate(str) {
   return str.length < 15 ? str : str.slice(0, 8) + "...";
 }
+
 function containsLowerCase(str) {
   if (str.length === 0) {
     return false;
@@ -71,6 +73,7 @@ function containsLowerCase(str) {
     return false;
   }
 }
+
 function containsUpperCase(str) {
   if (str.length === 0) {
     return false;
@@ -98,10 +101,10 @@ function isValidPassword(password) {
   if (!containsUpperCase(password)) {
     return false;
   }
-  if (/\s/.test(password)) {
+  if (containsSpace(password)) {
     return false;
   }
-  if (!/[0-9]/.test(password)) {
+  if (!containsDigit(password)) {
     return false;
   }
   if (!containsNonAlphanumeric(password)) {
